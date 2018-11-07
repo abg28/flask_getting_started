@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/name", methods=["GET"])
 def getName():
     """
-    Returns the string "Hello, world" to the caller
+    Returns my name to the caller as JSON
     """
     name = {
         "name": "Alex Guevara"
@@ -18,7 +18,7 @@ def getName():
 @app.route("/hello/<name>", methods=["GET"])
 def getData(name):
     """
-    Returns the data dictionary below to the caller as JSON
+    Returns the name parameter to the caller as JSON
     """
     data = {
         "message": "Hello there, %s" % name
@@ -29,14 +29,11 @@ def getData(name):
 @app.route("/distance", methods=["POST"])
 def setDistance():
     """
-    Returns the data dictionary below to the caller as JSON
+    Posts the data dictionary below to the server as JSON
     """
-    points = {
-        "a": [2, 4],
-        "b": [5, 6]
-    }
-    distance = math.sqrt(math.pow(points["a"][2]-points["b"][2], 2) +
-                         math.pow(points["a"][1]-points["b"][1], 2))
+    points = request.get_json()
+    distance = math.sqrt(math.pow(points["a"][1]-points["b"][1], 2) +
+                         math.pow(points["a"][0]-points["b"][0], 2))
     data = {
         "distance": distance,
         "a": points["a"],
