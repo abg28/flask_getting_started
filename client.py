@@ -1,15 +1,15 @@
 import requests
 
 # Tests POST /distance endpoint
-r = requests.post("vcm-7291.vm.duke.edu:5000/distance",
+r = requests.post("http://vcm-7291.vm.duke.edu:5000/distance",
                   json={"a": [2, 4],
                         "b": [5, 6]})
 print(r.json())
 
 # Tests GET /name endpoint
-r = requests.get("vcm-7291.vm.duke.edu:5000/name")
+r = requests.get("http://vcm-7291.vm.duke.edu:5000/name")
 print(r.json())
 
 # Tests GET /hello/<name> endpoint
-r = requests.get("vcm-7291.vm.duke.edu:5000/hello/Alex")
+r = requests.get("http://vcm-7291.vm.duke.edu:5000/hello/Alex")
 print(r.json())
